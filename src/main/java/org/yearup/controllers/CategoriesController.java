@@ -1,5 +1,6 @@
 package org.yearup.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.yearup.data.CategoryDao;
@@ -23,6 +24,7 @@ public class CategoriesController
 
     // create an Autowired controller to inject the categoryDao and ProductDao
 
+    @Autowired
     public CategoriesController(CategoryDao categoryDao, ProductDao productDao) {
         this.categoryDao = categoryDao;
         this.productDao = productDao;
@@ -77,8 +79,10 @@ public class CategoriesController
     // add annotation to call this method for a DELETE action - the url path must include the categoryId
     // add annotation to ensure that only an ADMIN can call this function
     @DeleteMapping("{id}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public void deleteCategory(@PathVariable int id)
     {
         // delete the category by id
+        categoryDao.delete(id);
     }
 }
