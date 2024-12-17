@@ -22,19 +22,19 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
     }
 
     @Override
-    public List<Category> getAllCategories()
+    public List<Category> getAllCategories() // TODO: Make sure formatting is consistent
     {
         // get all categories
-        String sql = "SELECT * FROM categories";
+        String sql = "SELECT * FROM categories;";
         List<Category> categories = new ArrayList<>();
 
-        try (
-                Connection connection = getConnection();
-                PreparedStatement preparedStatement = connection.prepareStatement(sql);
-                ResultSet row = preparedStatement.executeQuery();
-        ) {
+        try (Connection connection = getConnection())
+        {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            ResultSet row = preparedStatement.executeQuery();
 
-            while (row.next()) {
+            while (row.next())
+            {
                 Category category = mapRow(row);
                 categories.add(category);
             }
@@ -50,7 +50,7 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
     public Category getById(int categoryId)
     {
         // get category by id
-        String sql = "SELECT * FROM categories WHERE category_id=?";
+        String sql = "SELECT * FROM categories WHERE category_id=?;";
 
         try (Connection connection = getConnection())
         {
@@ -75,6 +75,31 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
     public Category create(Category category)
     {
         // create a new category
+        String sql = "INSERT INTO categories(name,description) " +
+                     "VALUES (?, ?);";
+        try (Connection connection = getConnection())
+        {
+            PreparedStatement statement = connection.prepareStatement(sql,PreparedStatement.RETURN_GENERATED_KEYS);
+            statement.setString(1, category.getName());
+            statement.setString(2, category.getDescription());
+
+            int rowsAffected = statement.executeUpdate();
+
+            if (rowsAffected > 0)
+            {
+                ResultSet generatedKeys = statement.getGeneratedKeys();
+
+                if (generatedKeys.next())
+                {
+                    int categoryId = generatedKeys.getInt(1);
+                    return getById(categoryId);
+                }
+            }
+        }
+        catch (SQLException e)
+        {
+            throw new RuntimeException(e);
+        }
         return null;
     }
 
