@@ -24,7 +24,7 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
     @Override
     public List<Category> getAllCategories() // TODO: Make sure formatting is consistent
     {
-        // get all categories
+        // getById all categories
         String sql = "SELECT * FROM categories;";
         List<Category> categories = new ArrayList<>();
 
@@ -49,7 +49,7 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
     @Override
     public Category getById(int categoryId)
     {
-        // get category by id
+        // getById category by id
         String sql = "SELECT * FROM categories WHERE category_id = ?;";
 
         try (Connection connection = getConnection())
