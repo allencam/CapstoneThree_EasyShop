@@ -42,3 +42,9 @@ Before:
 
 After:
 ![after_profile_update.png](images/after_profile_update.png)
+
+## Honorable Mention
+
+During this project I learned that I can call protected methods from a different class, but within the same package
+
+![protected_method_call.png](images/protected_method_call.png)
