@@ -22,9 +22,8 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
     }
 
     @Override
-    public List<Category> getAllCategories() // TODO: Make sure formatting is consistent
+    public List<Category> getAllCategories()
     {
-        // getById all categories
         String sql = "SELECT * FROM categories;";
         List<Category> categories = new ArrayList<>();
 
@@ -49,7 +48,6 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
     @Override
     public Category getById(int categoryId)
     {
-        // getById category by id
         String sql = "SELECT * FROM categories WHERE category_id = ?;";
 
         try (Connection connection = getConnection())
@@ -74,7 +72,6 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
     @Override
     public Category create(Category category)
     {
-        // create a new category
         String sql = "INSERT INTO categories(name,description) " +
                      "VALUES (?, ?);";
         try (Connection connection = getConnection())
@@ -106,7 +103,6 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
     @Override
     public void update(int categoryId, Category category)
     {
-        // update category
         String sql = "UPDATE categories" +
                 " SET name = ? " +
                 "   , description = ? " +
@@ -129,7 +125,6 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao
     @Override
     public void delete(int categoryId)
     {
-        // delete category
         String sql = "DELETE FROM categories " +
                 "WHERE category_id = ?;";
         try (Connection connection = getConnection())

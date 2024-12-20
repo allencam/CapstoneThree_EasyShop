@@ -27,7 +27,6 @@ public class ProfileController
         this.userDao = userDao;
     }
 
-    // GET, PUT
     @GetMapping
     public Profile getByUserId(Principal principal)
     {
