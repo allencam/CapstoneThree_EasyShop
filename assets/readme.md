@@ -2,7 +2,7 @@
 
 EasyShop is an online store that allows users to log in/out, edit their profiles, browse and filter through the various
 products available on the platform, and add those items to their cart (should they change their mind, they can also
-clear their cart). Here is an overview of our recent updates:
+clear their cart). I made it through phase 4 of this project, here is an overview of recent updates:
 
 ## Phase One: Categories Controller
 
