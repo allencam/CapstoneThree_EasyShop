@@ -27,10 +27,10 @@ public class MySqlShoppingCartDao extends MySqlDaoBase implements ShoppingCartDa
         ShoppingCart cart = new ShoppingCart();
 
         String sql = "SELECT shopping_cart.*, products.* " +
-                 "FROM shopping_cart " +
-                 "JOIN products " +
-                 "ON shopping_cart.product_id = products.product_id " +
-                 "WHERE shopping_cart.user_id = ?";
+                     "FROM shopping_cart " +
+                     "JOIN products " +
+                     "ON shopping_cart.product_id = products.product_id " +
+                     "WHERE shopping_cart.user_id = ?";
 
         try (Connection connection = getConnection())
         {

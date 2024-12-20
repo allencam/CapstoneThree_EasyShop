@@ -35,19 +35,15 @@ public class ShoppingCartController
         this.productDao = productDao;
     }
 
-    // each method in this controller requires a Principal object as a parameter
     @GetMapping
     public ShoppingCart getCart(Principal principal)
     {
         try
         {
-            // getById the currently logged in username
-            String userName = principal.getName(); // TODO: Make a method to DRY out code
-            // find database user by userId
+            String userName = principal.getName();
             User user = userDao.getByUserName(userName);
             int userId = user.getId();
 
-            // use the shoppingcartDao to getById all items in the cart and return the cart
             return shoppingCartDao.getByUserId(userId);
 
         }
@@ -57,8 +53,6 @@ public class ShoppingCartController
         }
     }
 
-    // add a POST method to add a product to the cart - the url should be
-    // https://localhost:8080/cart/products/15 (15 is the productId to be added
     @PostMapping("products/{productId}")
     public ShoppingCart addToCart(Principal principal, @PathVariable int productId)
     {
@@ -77,13 +71,6 @@ public class ShoppingCartController
 
     }
 
-    // add a PUT method to update an existing product in the cart - the url should be
-    // https://localhost:8080/cart/products/15 (15 is the productId to be updated)
-    // the BODY should be a ShoppingCartItem - quantity is the only value that will be updated
-
-
-    // add a DELETE method to clear all products from the current users cart
-    // https://localhost:8080/cart
     @DeleteMapping
     public ShoppingCart emptyCart(Principal principal)
     {
