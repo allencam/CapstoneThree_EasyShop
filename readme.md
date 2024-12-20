@@ -12,7 +12,7 @@ clear their cart). I made it through phase 4 of this project, here is an overvie
   - Currently, there is no way to modify categories on the frontend. These actions must be done on Postman, or similar
     platform
 
-![categories_dropdown.png](images/categories_dropdown.png)
+![categories_dropdown.png](assets/images/categories_dropdown.png)
 
 
 ## Phase Two: Bug Fixes
@@ -20,7 +20,7 @@ clear their cart). I made it through phase 4 of this project, here is an overvie
 - Fixed a bug related to filtering by price range
 - Fixed a bug related to duplicate products on update actions done by administrators
 
-![working_pricerange.png](images/working_pricerange.png)
+![working_pricerange.png](assets/images/working_pricerange.png)
 
 ## Phase Three: Shopping Cart!!
 
@@ -28,23 +28,23 @@ clear their cart). I made it through phase 4 of this project, here is an overvie
   - Additionally, you can add multiples of the same item to your cart!
 
 Full cart:
-![full_cart.png](images/full_cart.png)
+![full_cart.png](assets/images/full_cart.png)
 
 After clearing cart:
-![emptied_cart.png](images/emptied_cart.png)
+![emptied_cart.png](assets/images/emptied_cart.png)
 
 ## Phase Four: User Profile
 
 - New feature: users can now edit their profile details (name, phone number, address, etc...)
 
 Before:
-![before_profile_update.png](images/before_profile_update.png)
+![before_profile_update.png](assets/images/before_profile_update.png)
 
 After:
-![after_profile_update.png](images/after_profile_update.png)
+![after_profile_update.png](assets/images/after_profile_update.png)
 
 ## Honorable Mention
 
 During this project I learned that I can call protected methods from a different class, but within the same package
 
-![protected_method_call.png](images/protected_method_call.png)
+![protected_method_call.png](assets/images/protected_method_call.png)
